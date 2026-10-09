@@ -30,7 +30,7 @@ typedef uint16_t word;
 typedef uint32_t dword;
 
 void clear_terminal(void);
-//void print_str(int x, int y, char *str, int fg, int bg);
+void print_str(int x, int y, char *str, int fg, int bg);
 char *grid_to_addr(int x, int y);
 byte create_attribute_byte(vgaColor fg, vgaColor bg);
 void puts_char(int x, int y, byte chr, int fg, int bg);
@@ -43,17 +43,22 @@ void clear_terminal(void){
 		}
 	}
 }
-/* still in progress
+/* still in progress*/
 void print_str(int x, int y, char *str, int fg, int bg){
 	int _x = x;
 	int _y = y;
 	for(int i=0; str[i]!='\0';i++){
 		if(str[i]=='\n'){
-			y++;	
+			_y++;
+			_x=0;		
 		}
-	}// still not finished
+		else{
+			puts_char(_x, _y, str[i], fg, bg);
+			_x++;
+		}
+	}
 }
-*/
+
 char *grid_to_addr(int x, int y){
 	int offset = (y*160)+(x*2);
 	return (char *)((VGA_MEMORY)+offset);
@@ -73,5 +78,5 @@ void puts_char(int x, int y, byte chr, int fg, int bg){
 
 void kernel_main(void){
 	clear_terminal();
-	puts_char(0,12,'H',WHITE,BLACK);	
+	print_str(0,12,"Hello! I'm a string!\n215-[A--=6}\n",WHITE,BLACK);	
 }
