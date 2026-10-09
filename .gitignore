@@ -1,0 +1,5 @@
+*.o
+*.bin
+disk.img
+kernel.map
+bck.sh

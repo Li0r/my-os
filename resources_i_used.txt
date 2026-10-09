@@ -1,0 +1,55 @@
+[==== BOOTLOADER ====]
+
+GDT:
+-------------------------
+https://osdev.wiki/wiki/Global_Descriptor_Table
+
+https://wiki.osdev.org/GDT_Tutorial
+
+
+A20:
+-------------------------
+https://wiki.osdev.org/A20_Line
+
+
+Protected Mode:
+-------------------------
+http://www.osdever.net/tutorials/view/the-world-of-protected-mode
+
+https://boot.hackclub.com/guides/from-scratch/protectedMode
+
+
+General:
+-------------------------
+https://boot.hackclub.com/guides/from-scratch/bootloader
+
+https://amittech.dev/%D7%9C%D7%99%D7%91%D7%AA-%D7%94%D7%9E%D7%97%D7%A9%D7%91/2%20-%20%D7%90%D7%A1%D7%9E%D7%91%D7%9C%D7%99%2032%20%D7%91%D7%99%D7%98/2.2%20-%20%D7%98%D7%91%D7%9C%D7%AA%20%D7%94GDT/2.2%20-%20%D7%98%D7%91%D7%9C%D7%AA%20%D7%94GDT%20-%20%D7%94%D7%A8%D7%A6%D7%90%D7%94/
+
+https://wiki.osdev.org/BIOS#Common_functions
+
+https://halcyondream.org/2025/01/21/Why-does-BIOS-load-boot-code-from-0x7c00.html
+
+[==== CROSS COMPILER BUILD ====]
+
+i686-elf-gcc:
+-------------------------
+https://wiki.osdev.org/GCC_Cross-Compiler
+
+
+[=== KERNEL ===]
+
+VGA:
+-------------------------
+https://wiki.osdev.org/VGA_Text_Mode
+
+
+General:
+-------------------------
+https://www.gnu.org/software/grub/manual/multiboot/multiboot.html#boot_002eS
+
+https://wiki.osdev.org/Meaty_Skeleton
+
+https://wiki.osdev.org/Bare_Bones
+
+[==== GENERAL ====]
+
