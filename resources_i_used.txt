@@ -42,6 +42,10 @@ VGA:
 -------------------------
 https://wiki.osdev.org/VGA_Text_Mode
 
+IDT:
+-------------------------
+https://wiki.osdev.org/Interrupt_Descriptor_Table
+
 
 General:
 -------------------------

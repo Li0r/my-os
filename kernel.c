@@ -29,12 +29,19 @@ typedef uint8_t byte;
 typedef uint16_t word;
 typedef uint32_t dword;
 
+void idt_init(void); 			// from idt.c
+void unhandled_interupt(void);
 void clear_terminal(void);
 void print_str(int x, int y, char *str, int fg, int bg);
 char *grid_to_addr(int x, int y);
 byte create_attribute_byte(vgaColor fg, vgaColor bg);
 void puts_char(int x, int y, byte chr, int fg, int bg);
 void kernel_main(void);
+
+void unhandled_interupt(void){
+	print_str(30,10,"IDT check\n",GREEN,BLACK);
+}
+
 
 void clear_terminal(void){
 	for(int i=0;i<VGA_HEIGHT;i++){
@@ -43,7 +50,7 @@ void clear_terminal(void){
 		}
 	}
 }
-/* still in progress*/
+
 void print_str(int x, int y, char *str, int fg, int bg){
 	int _x = x;
 	int _y = y;
@@ -76,7 +83,10 @@ void puts_char(int x, int y, byte chr, int fg, int bg){
 	vga_mem_bufp[1] = attribute;
 }
 
+
 void kernel_main(void){
 	clear_terminal();
-	print_str(0,12,"Hello! I'm a string!\n215-[A--=6}\n",WHITE,BLACK);	
+	//print_str(30,12,"Hello! I'm a string!\n",WHITE,BLACK);
+	idt_init();
+	__asm__ __volatile__("int $0x20");	// to triger the interupt. this goes to our idt and checks for 0x20 and goes to idt_init function in idt.c which initialize the idt and load the idt_des to idtr. then the int 0x20 will caue the program look at the table and see the function in asm that relates is default isr and do what it says - call unhandled_interupts func here.	
 }

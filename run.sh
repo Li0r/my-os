@@ -9,7 +9,9 @@ nasm -f bin boot/boot.asm -o boot/boot.bin
 # --- kernel ---
 i686-elf-gcc kernel.c -o kernel.o -ffreestanding -Wall -Wextra -c
 nasm -f elf32 kernel_entry.asm -o kernel_entry.o
-i686-elf-ld -T linker.ld -o kernel.bin kernel_entry.o kernel.o
+nasm -f elf32 idt/idt_asm.asm -o idt/idt_asm.o
+i686-elf-gcc -ffreestanding -Wall -Wextra -c idt/idt_c.c -o idt/idt_c.o
+i686-elf-ld -T linker.ld -o kernel.bin kernel_entry.o kernel.o idt/idt_c.o idt/idt_asm.o
 
 # --- stage 2 ---
 SECTORS=$(( ($(stat -c %s kernel.bin) + 511) / 512 ))
